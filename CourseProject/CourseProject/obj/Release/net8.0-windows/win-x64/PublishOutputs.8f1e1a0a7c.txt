@@ -1,0 +1,12 @@
+D:\coursePublic\CourseProject.pdb
+D:\coursePublic\CourseProject.dll.config
+D:\coursePublic\D3DCompiler_47_cor3.dll
+D:\coursePublic\PenImc_cor3.dll
+D:\coursePublic\PresentationNative_cor3.dll
+D:\coursePublic\vcruntime140_cor3.dll
+D:\coursePublic\wpfgfx_cor3.dll
+D:\coursePublic\Microsoft.Data.SqlClient.SNI.dll
+D:\coursePublic\msalruntime.dll
+D:\coursePublic\WebView2Loader.dll
+D:\coursePublic\e_sqlite3.dll
+D:\coursePublic\CourseProject.exe

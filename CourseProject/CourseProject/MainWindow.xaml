@@ -1,0 +1,59 @@
+﻿<Window x:Class="CourseProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseProject" xmlns:local1="clr-namespace:CourseProject.Views" xmlns:viewmodels="clr-namespace:CourseProject.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowVM}"
+        mc:Ignorable="d"
+        Title="Виртуальный деканат" WindowStartupLocation="CenterScreen" MaxHeight="600" MaxWidth="1050" MinWidth="1050" MinHeight="600" Background="#3aafa9" WindowStyle="none" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="NoResize">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="29"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="#1F1F1F" BorderThickness="0,0,0,1">
+            <StackPanel Orientation="Horizontal" Width="1050" Background="#1F1F1F" HorizontalAlignment="Left">
+                <TextBlock Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" Text="Виртуальный деканат"/>
+                <Button Margin="891,0,0,0" Click="Button_Click" Style="{StaticResource ButtonStyleClose}" Content="X" Width="30" Height="30"/>
+            </StackPanel>
+        </Border>
+        
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80px"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#2b7a78" Offset="0"/>
+                        <GradientStop Color="#2b7a78" Offset="0.9"/>
+                        <GradientStop Color="#3aafa9" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image Margin="15,10,-25,15" RenderOptions.BitmapScalingMode="HighQuality" Grid.Column="0" Source="pack://application:,,,/Resources/logo.png"/>
+                <Button Grid.Column="1" HorizontalContentAlignment="Center" FontWeight="Bold" Content="Новости" Style="{StaticResource navButton}" Command="{Binding GoToNews}"/>
+                <Button Grid.Column="2" HorizontalContentAlignment="Center" FontWeight="Bold" Content="Аттестация" Style="{StaticResource navButton}" Command="{Binding GoToPerfomance}"/>
+                <Button Grid.Column="3" HorizontalContentAlignment="Center" FontWeight="Bold" Content="Расписание" Style="{StaticResource navButton}" Command="{Binding GoToTimetable}"/>
+                <Button Grid.Column="4" HorizontalContentAlignment="Center" FontWeight="Bold" Content="Справки" Style="{StaticResource navButton}" Command="{Binding GoToRequest}"/>
+                <Button Grid.Column="5" HorizontalContentAlignment="Center" FontWeight="Bold" Content="Профиль" Style="{StaticResource navButton}" Command="{Binding GoToProfile}" Visibility="{Binding VisibillityProfile}"/>
+                <Button Grid.Column="5" HorizontalContentAlignment="Center" FontWeight="Bold" Content="Студенты" Style="{StaticResource navButton}" Command="{Binding GoToStudents}" Visibility="{Binding VisibillityStudents}"/>
+                <Button Grid.Column="6" HorizontalContentAlignment="Center" FontWeight="Bold" Content="Выйти" Style="{StaticResource navButton}" Command="{Binding GoToAuthorization}"/>
+            </Grid>
+            <ContentControl Grid.Row="1" Content="{Binding SelectedPage}"/>
+        </Grid>
+    </Grid>
+</Window>

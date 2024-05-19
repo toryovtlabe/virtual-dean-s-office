@@ -1,0 +1,72 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\add-friend.png" />
+    <None Remove="Resources\add.png" />
+    <None Remove="Resources\approved.png" />
+    <None Remove="Resources\back.png" />
+    <None Remove="Resources\back2.png" />
+    <None Remove="Resources\check.png" />
+    <None Remove="Resources\defilter.png" />
+    <None Remove="Resources\diskette.png" />
+    <None Remove="Resources\editable.png" />
+    <None Remove="Resources\editing.png" />
+    <None Remove="Resources\filter.png" />
+    <None Remove="Resources\gorod_back.jpg" />
+    <None Remove="Resources\image.png" />
+    <None Remove="Resources\logo.ico" />
+    <None Remove="Resources\logo.png" />
+    <None Remove="Resources\newsdefault.jpg" />
+    <None Remove="Resources\next.png" />
+    <None Remove="Resources\next2.png" />
+    <None Remove="Resources\password.ttf" />
+    <None Remove="Resources\pen.png" />
+    <None Remove="Resources\read-more.png" />
+    <None Remove="Resources\search.png" />
+    <None Remove="Resources\student.png" />
+    <None Remove="Resources\x-mark.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
+    <PackageReference Include="RoyWpf.Behaviors.MessengerSendAction" Version="0.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\add-friend.png" />
+    <Resource Include="Resources\add.png" />
+    <Resource Include="Resources\approved.png" />
+    <Resource Include="Resources\back.png" />
+    <Resource Include="Resources\back2.png" />
+    <Resource Include="Resources\check.png" />
+    <Resource Include="Resources\defilter.png" />
+    <Resource Include="Resources\diskette.png" />
+    <Resource Include="Resources\editable.png" />
+    <Resource Include="Resources\editing.png" />
+    <Resource Include="Resources\filter.png" />
+    <Resource Include="Resources\gorod_back.jpg" />
+    <Resource Include="Resources\image.png" />
+    <Resource Include="Resources\logo.ico" />
+    <Resource Include="Resources\logo.png" />
+    <Resource Include="Resources\newsdefault.jpg" />
+    <Resource Include="Resources\next.png" />
+    <Resource Include="Resources\next2.png" />
+    <Resource Include="Resources\password.ttf" />
+    <Resource Include="Resources\pen.png" />
+    <Resource Include="Resources\read-more.png" />
+    <Resource Include="Resources\search.png" />
+    <Resource Include="Resources\student.png" />
+    <Resource Include="Resources\x-mark.png" />
+  </ItemGroup>
+
+</Project>

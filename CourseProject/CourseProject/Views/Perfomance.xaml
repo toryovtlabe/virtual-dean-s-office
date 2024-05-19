@@ -1,0 +1,168 @@
+﻿<UserControl x:Class="CourseProject.Views.Perfomance"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CourseProject.Views" xmlns:viewmodels="clr-namespace:CourseProject.ViewModels" xmlns:help="clr-namespace:CourseProject.Helpers" d:DataContext="{d:DesignInstance Type=viewmodels:PerfomanceVM}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewmodels:PerfomanceVM/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <help:StringToIntGreaterThan76Converter x:Key="StringToIntGreaterThan76Converter"/>
+    </UserControl.Resources>
+    <Grid Margin="35,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{Binding IsAdmin}"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="{Binding StudentSelect}"/>
+            <RowDefinition Height="{Binding StudentSelect}"/>
+            <RowDefinition Height="{Binding StudentUnSelect}"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox Margin="0,0,5,0" ToolTip="Специальность" Style="{StaticResource ComboBoxWithPlaceholder}" Grid.Column="0" ItemsSource="{Binding Specialities}" SelectedItem="{Binding SelectedSpeciality}" Height="30"/>
+            <ComboBox Margin="5,0,5,0" ToolTip="Курс" Style="{StaticResource ComboBoxWithPlaceholder}" Grid.Column="1" ItemsSource="{Binding Courses}" SelectedItem="{Binding SelectedCourse}" Height="30"/>
+            <ComboBox Margin="5,0,0,0" ToolTip="Группа" Style="{StaticResource ComboBoxWithPlaceholder}" Grid.Column="2" ItemsSource="{Binding GroupNums}" SelectedItem="{Binding SelectedGroup}" Height="30"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+            <Button VerticalAlignment="Top" Width="40" Height="30" Style="{StaticResource ButtonStyle}" Grid.Column="0" Command="{Binding Back}">
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Margin="5" Source="pack://application:,,,/Resources/back.png"/>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.Click">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.1" To="5,10,15,5"/>
+                                    <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.1" To="5,10,5,5" BeginTime="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <ComboBox ToolTip="Фамилия студента" VerticalAlignment="Top" Grid.Column="1" Style="{StaticResource ComboBoxWithPlaceholder}" FontSize="20" Height="43" ItemsSource="{Binding Students}" SelectedIndex="{Binding Index}" SelectedItem="{Binding Student}" DisplayMemberPath="Surname"/>
+            <Button VerticalAlignment="Top" Width="40" Height="30" Style="{StaticResource ButtonStyle}" Grid.Column="2" Command="{Binding Next}">
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Margin="5" Source="pack://application:,,,/Resources/next.png"/>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.Click">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.1" To="15,10,5,5"/>
+                                    <ThicknessAnimation Storyboard.TargetProperty="Margin" Duration="0:0:0.1" To="5,10,5,5" BeginTime="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </Grid>
+
+        <Border Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Center" Background="#DEF2F1" Padding="15,15,15,0" CornerRadius="8">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Width="150">
+                    <Border Width="150" Height="46.5" Margin="0,1,0,0" BorderBrush="black" BorderThickness="1">
+                        <TextBlock FontSize="18" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Text="Предмет"/>
+                    </Border>
+                    <Border BorderBrush="black" Height="48.9" BorderThickness="1">
+                        <TextBlock Margin="5" FontSize="18" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Text="Оценка"/>
+                    </Border>
+                    <Border BorderBrush="black" Height="48" BorderThickness="1">
+                        <TextBlock Margin="5" FontSize="18" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Text="Пропуски"/>
+                    </Border>
+                    <Border BorderBrush="black" Height="47" BorderThickness="1">
+                        <TextBlock Margin="5" FontSize="18" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Text="Преподаватель"/>
+                    </Border>
+                </StackPanel>
+
+                <ListBox Width="640" VirtualizingPanel.ScrollUnit="Pixel" ScrollViewer.CanContentScroll="False" VerticalAlignment="Top" Margin="-2,0,0,0" BorderThickness="0" Background="Transparent" ItemsSource="{Binding Student.Progresses , UpdateSourceTrigger=PropertyChanged}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel VerticalAlignment="Top" Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Padding" Value="0"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <ContentPresenter/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Border Height="46.5" Width="150" Grid.Row="0" BorderBrush="black" BorderThickness="1">
+                                    <TextBlock VerticalAlignment="Center" FontSize="20" TextAlignment="Center" Text="{Binding Subject.Name}"/>
+                                </Border>
+                                <Border Grid.Row="1" Height="48.9" BorderBrush="black" BorderThickness="1">
+                                    <TextBlock HorizontalAlignment="Center">
+                                        <TextBlock VerticalAlignment="Center" Margin="0,-5,-30,0" PreviewTextInput="MarkValidationTextBox" FontSize="20" TextAlignment="Center" Text="{Binding Mark}"/>
+                                        <TextBox MaxLength="2" Width="50" VerticalAlignment="Center" Margin="0,10,0,0" CaretBrush="White" BorderBrush="black" BorderThickness="1" Background="#DEF2F1" Visibility="{Binding DataContext.AdminVisible, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}" PreviewTextInput="NumberValidationTextBox" FontSize="20" TextAlignment="Center" Text="{Binding Mark}"/>
+                                    </TextBlock>
+                                </Border>
+                                <Border Grid.Row="2" Height="48" BorderBrush="black" BorderThickness="1">
+                                    <TextBlock HorizontalAlignment="Center">
+                                        <TextBlock VerticalAlignment="Center" Margin="0,-5,-40,0" PreviewTextInput="NumberValidationTextBox" FontSize="20" TextAlignment="Center" Text="{Binding Skips}"/>
+                                        <TextBox MaxLength="3" Width="50" VerticalAlignment="Center" Margin="0,10,0,0" CaretBrush="White" BorderBrush="black" BorderThickness="1" Background="#DEF2F1" Visibility="{Binding DataContext.AdminVisible, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}" PreviewTextInput="NumberValidationTextBox" FontSize="20" TextAlignment="Center" Text="{Binding Skips}"/>
+                                    </TextBlock>
+                                </Border>
+                                <Border Height="47" Width="150" Grid.Row="3" BorderBrush="black" BorderThickness="1">
+                                    <TextBlock VerticalAlignment="Center" FontSize="20" TextAlignment="Center" Text="{Binding Subject.Teacher.Fullname}"/>
+                                </Border>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                
+                <StackPanel Width="150" Margin="-2,0,0,0">
+                    <Border Width="150" Height="46.5" Margin="0,1,0,0" BorderBrush="black" BorderThickness="1">
+                        <TextBlock FontSize="18" VerticalAlignment="Center" FontWeight="Bold" Margin="5" TextAlignment="Center" Text="Все"/>
+                    </Border>
+                    <Border BorderBrush="black" Height="48.9" BorderThickness="1">
+                        <TextBlock Margin="5" FontSize="25" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding AvarageMark}"/>
+                    </Border>
+                    <Border BorderBrush="black" Height="48" BorderThickness="1">
+                        <TextBlock x:Name="myTextBlock" Margin="5" FontSize="25" TextAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Text="{Binding SumSkips}">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=myTextBlock, Converter={StaticResource StringToIntGreaterThan76Converter}}" Value="True">
+                                            <Setter Property="Foreground" Value="Red"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Border>
+                    <Border BorderBrush="black" Height="47" BorderThickness="1"/>
+
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Button Height="60" Style="{StaticResource ButtonStyle}" Visibility="{Binding AdminVisible}" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="200" Grid.Row="3" FontSize="20" Content="Сохранить" Command="{Binding SaveStudent}"/>
+        <TextBlock Grid.Row="4" Grid.ColumnSpan="3" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#DEF2F1" Text="Для просмотра аттестации необходимо выбрать студента и группу с установленным расписанием.."/>
+    </Grid>
+</UserControl>

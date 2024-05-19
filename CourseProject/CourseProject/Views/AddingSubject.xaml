@@ -1,0 +1,102 @@
+﻿<Window x:Class="CourseProject.Views.AddingSubject"
+        x:Name="window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseProject.Views" xmlns:viewmodels="clr-namespace:CourseProject.ViewModels" xmlns:help="clr-namespace:CourseProject.Helpers" d:DataContext="{d:DesignInstance Type=viewmodels:AddingSubjectVM}"
+        mc:Ignorable="d"
+        Title="Добавление предмета" WindowStartupLocation="CenterScreen" MinWidth="350" MinHeight="270" MaxHeight="270" MaxWidth="350" WindowStyle="none" MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="NoResize">
+    <Window.DataContext>
+        <viewmodels:AddingSubjectVM/>
+    </Window.DataContext>
+    <Window.Resources>
+        <help:TimeOnlyToStringConverter x:Key="myTimeConverter"/>
+    </Window.Resources>
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="29"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="#1F1F1F" BorderThickness="0,0,0,1">
+            <StackPanel Orientation="Horizontal" Width="350" Background="#1F1F1F" HorizontalAlignment="Left">
+                <TextBlock Text="Добавление предмета" Margin="10,0,0,0" Foreground="White" VerticalAlignment="Center"/>
+                <Button Margin="187,0,0,0" Click="Button_Click" Style="{StaticResource ButtonStyleClose}" Content="X" Width="30" Height="30"/>
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="0,-1,0,0">
+            <StackPanel>
+                <Border Margin="5" Padding="2" BorderBrush="black" BorderThickness="1" CornerRadius="8">
+                    <TextBox TextAlignment="Center" MaxLength="9" Text="{Binding ThisSubject.Name}" FontSize="20" Style="{StaticResource placeHolder}" Tag="Сокращенное название предмета" Foreground="black" CaretBrush="black"/>
+                </Border>
+                <Border Margin="5" Padding="2" BorderBrush="black" BorderThickness="1" CornerRadius="8">
+                    <StackPanel Orientation="Horizontal">
+                        <Grid Margin="5,5,0,5" Width="270">
+                            <ComboBox x:Name="mybox" HorizontalContentAlignment="Center" ItemsSource="{Binding Auditoriums}" SelectedItem="{Binding ThisSubject.Auditorium}" DisplayMemberPath="Fullname" FontSize="20"/>
+                            <TextBlock Text="Номер аудитории" IsHitTestVisible="False" FontSize="20" HorizontalAlignment="Center">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=mybox,Path=SelectedItem}" Value="{x:Null}">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+
+                        <Button Margin="5,0" Width="35" Height="35" Style="{StaticResource ButtonStyle}" Command="{Binding CreateAuditorium}">
+                            <Image Margin="3" RenderOptions.BitmapScalingMode="HighQuality" Source="pack://application:,,,/Resources/add.png"/>
+                        </Button>
+                    </StackPanel>
+                </Border>
+                <Border Margin="5" Padding="2" BorderBrush="black" BorderThickness="1" CornerRadius="8">
+                    <StackPanel Orientation="Horizontal">
+                        <Grid Margin="5,5,0,5" Width="270">
+                            <ComboBox x:Name="mybox2" HorizontalContentAlignment="Center" ItemsSource="{Binding Teachers}" SelectedItem="{Binding ThisSubject.Teacher}" DisplayMemberPath="Fullname" FontSize="20"/>
+                            <TextBlock Text="Преподаватель" IsHitTestVisible="False" FontSize="20" HorizontalAlignment="Center">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=mybox2,Path=SelectedItem}" Value="{x:Null}">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                        <Button Margin="5,0" Width="35" Height="35" Style="{StaticResource ButtonStyle}" Command="{Binding CreateTeacher}">
+                            <Image Margin="3" RenderOptions.BitmapScalingMode="HighQuality" Source="pack://application:,,,/Resources/add.png"/>
+                        </Button>
+                    </StackPanel>
+                </Border>
+                <Grid Margin="5,0,5,0">
+                    <ComboBox HorizontalContentAlignment="Center" x:Name="mybox3" ItemsSource="{Binding StartTimes}" SelectedItem="{Binding ThisSubject.Start}" FontSize="20"/>
+                    <TextBlock Text="Время начала" IsHitTestVisible="False" FontSize="20" HorizontalAlignment="Center">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Visibility" Value="Hidden"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=mybox3,Path=SelectedItem}" Value="{x:Null}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+                <Button Height="30" Style="{StaticResource ButtonStyle}" Content="Добавить" Command="{Binding AddSubject}" CommandParameter="{Binding ElementName=window}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

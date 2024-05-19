@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>D:\labs4sem\ООП\CourseProject\CourseProject\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\AddingSubject.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AuthorizationWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\CreateAuditorium.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\CreateGroup.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\CreateNews.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\CreateRequest.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\CreateStudent.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\CreateTeacher.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\News.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Perfomance.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Profile.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\RequestView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Students.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Timetable.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Styles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddingSubject.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AuthorizationWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CreateAuditorium.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CreateGroup.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CreateNews.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CreateRequest.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CreateStudent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CreateTeacher.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\News.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Perfomance.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Profile.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\RequestView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Students.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Timetable.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
